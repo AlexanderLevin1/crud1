@@ -1,0 +1,30 @@
+<html>
+
+<head>
+
+        <link rel="stylesheet" type="text/css" media="screen" href="./vendor/bootstrap/dist/css/bootstrap.css" />
+</head>
+
+<body>
+    <div class="container"> 
+    <form method='POST' action='/'>
+        <input name='name' value='create new customer' />
+        <button>Create Customer</button>
+    </form>
+    <ul>
+        {% for customer in customers %}
+        <li>
+            <form method='POST' action='/{{customer.id}}?_method=PUT'>
+                {{ customer.name }}
+                <input name='name' value='update name' />
+                <button>Update</button>
+            </form>
+            <form method='POST' action='/{{customer.id}}?_method=DELETE' />
+            <button>x</button>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+
+</html>
